@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_31_140133) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_01_010913) do
   create_table "gifts", force: :cascade do |t|
     t.string "name"
     t.string "image_url"
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "upvotes", default: 0
+    t.integer "downvotes", default: 0
     t.index ["name"], name: "index_gifts_on_name", unique: true
   end
 end

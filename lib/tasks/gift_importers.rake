@@ -4,7 +4,7 @@ namespace :gift_importers do
   desc "imports the gifts from gifts.csv file in db/data"
   task import_gifts_from_csv: :environment do
     puts "STARTNG TO IMPORT GIFTS FROM gifts.csv file"
-    CSV.foreach("db/data/gifts.csv", encoding: "iso-8859-1:utf-8", headers: true, col_sep: ";", header_converters: proc {|header| header.downcase.strip}) do |gift_row|
+    CSV.foreach("db/data/gifts_macroman_to_utf8.csv", headers: true, col_sep: ";", header_converters: proc {|header| header.downcase.strip}) do |gift_row|
       puts "*******"
       puts "IMPORTING GIFT #{gift_row}"
       gift = Gift.find_or_initialize_by(name: gift_row["name"].strip)

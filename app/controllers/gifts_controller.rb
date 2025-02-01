@@ -1,5 +1,5 @@
 class GiftsController < ApplicationController
-  before_action :set_gift, only: %i[ show edit update destroy ]
+  before_action :set_gift, only: %i[ show edit update destroy upvote ]
 
   def giftmash
     @random_gifts = Gift.where(id: [*Gift.minimum(:id)..Gift.maximum(:id)].sample(2))
@@ -12,6 +12,13 @@ class GiftsController < ApplicationController
 
   # GET /gifts/1 or /gifts/1.json
   def show
+  end
+
+  # UPVOTE THE GIFTS
+  def upvote
+    @gift.update!(upvotes: @gift.upvotes += 1)
+    Gift.find(params[:downvoted_gift_id]).update!(downvotes: @gift.downvotes += 1)
+    redirect_to giftmash_gifts_path
   end
 
   # GET /gifts/new
@@ -69,6 +76,6 @@ class GiftsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def gift_params
-      params.require(:gift).permit(:name, :image_url, :url)
+      params.require(:gift).permit(:name, :image_url, :url, :downvoted_gift_id)
     end
 end
