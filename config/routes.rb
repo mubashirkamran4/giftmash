@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :gifts do
     collection do 
       get :giftmash
+      get :results
     end
     member do
       patch :upvote

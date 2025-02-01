@@ -1,0 +1,15 @@
+<h1>Results</h1>
+<h1><%= link_to "Giftmash", giftmash_gifts_path %></h3>
+
+<table>
+    <th>Gift Name</th>
+    <th>Upvotes</th>
+    <th>Downvotes</th>
+    <% @gifts.each do |gift| %>
+        <tr>
+            <td><%= gift.name %></td>
+            <td><%= gift.upvotes %></td>
+            <td><%= gift.downvotes %></td>
+        </tr>
+    <% end %>
+</table>

@@ -5,6 +5,10 @@ class GiftsController < ApplicationController
     @random_gifts = Gift.where(id: [*Gift.minimum(:id)..Gift.maximum(:id)].sample(2))
   end
 
+  def results
+    @gifts = Gift.all.order(upvotes: :desc, downvotes: :asc)
+  end
+
   # GET /gifts or /gifts.json
   def index
     @gifts = Gift.all
@@ -17,7 +21,8 @@ class GiftsController < ApplicationController
   # UPVOTE THE GIFTS
   def upvote
     @gift.update!(upvotes: @gift.upvotes += 1)
-    Gift.find(params[:downvoted_gift_id]).update!(downvotes: @gift.downvotes += 1)
+    downvoted_gift = Gift.find(params[:downvoted_gift_id])
+    downvoted_gift.update!(downvotes: downvoted_gift.downvotes += 1)
     redirect_to giftmash_gifts_path
   end
 

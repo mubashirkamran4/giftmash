@@ -2,15 +2,17 @@
 
 <% content_for :title, "Gifts" %>
 
-<h4>Gifts</h4>
+<h1>Gifts</h1>
 
 <div id="gifts">
-  <h1>What do you like better</h2>
+  <h3>What do you like better</h3>
   <% @random_gifts.each do |gift| %>
-    <%= gift.name %> - <% gift.id %>
+    <%= gift.name %> - <%= gift.id %>
     <%= image_tag gift.image_url %>
     <%= button_to "LIKE", upvote_gift_path(gift, downvoted_gift_id: gift == @random_gifts.first ? @random_gifts.last.id : @random_gifts.first.id), 
                                         method: :patch %>
   <% end %>
   <%= link_to 'SKIP', giftmash_gifts_path %>
+  <%= link_to 'RESULTS', results_gifts_path %>
+
 </div>
