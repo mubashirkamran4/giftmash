@@ -1,6 +1,10 @@
 class GiftsController < ApplicationController
   before_action :set_gift, only: %i[ show edit update destroy ]
 
+  def giftmash
+    @random_gifts = Gift.where(id: [*Gift.minimum(:id)..Gift.maximum(:id)].sample(2))
+  end
+
   # GET /gifts or /gifts.json
   def index
     @gifts = Gift.all
