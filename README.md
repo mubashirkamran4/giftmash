@@ -1,24 +1,43 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## STEPS TO RUN
 
-Things you may want to cover:
+* Pre-requisites
 
-* Ruby version
+    * Docker Desktop
+    * Docker Compose(docker-compose)
 
-* System dependencies
+* Start Docker Desktop on your machine.
 
-* Configuration
+* Go to terminal and clone the code repo using ssh via command: 
+    `git clone git@github.com:mubashirkamran4/giftmash.git`
 
-* Database creation
+* Switch to code repo via `cd giftmash`
 
-* Database initialization
+* Build the docker image:
+   ```
+     docker-compose build
+   ```
+* Start the container:
+    
+    ```
+        docker-compose up -d
+    ```
 
-* How to run the test suite
+* Go inside the container using:
+    ```
+        docker-compose exec giftmash bash
+    ```
+* Execute the rake task to import the gifts from excel file `db/data/gifts_macroman_to_utf8.csv`:
 
-* Services (job queues, cache servers, search engines, etc.)
+    ```
+        rails gift_importers:import_gifts_from_csv
+    ```
 
-* Deployment instructions
+* Open the browser and point URL to `http://localhost:3000/` and you would see the 2 random gifts next to each other. 
+    * Click Like button under the product you like and it should upvote the liked one, downvote the discarded one and would be saved into db, the page would refresh and you can see another 2 random gifts every time you click like.
 
-* ...
+    * If you want to skip , click skip button on the bottom right and it would simply do thing with upvotes/downvotes instead would refresh the page and would display you next 2 gifts.
+
+    * If you want to see the Results page where gifts are ordered by upvotes, click the Results page on the top right and that would take you to results table. Clicking on Giftmash on top left would take you back to the home giftsmash page.
+    
