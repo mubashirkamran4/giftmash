@@ -1,15 +1,32 @@
-<h1>Results</h1>
-<h1><%= link_to "Giftmash", giftmash_gifts_path %></h3>
+<p style="color: green"><%= notice %></p>
 
-<table>
-    <th>Gift Name</th>
-    <th>Upvotes</th>
-    <th>Downvotes</th>
+<% content_for :title, "Results" %>
+
+
+<div class="results-top-bar">
+  <div></div>
+  <%= link_to 'Giftmash', giftmash_gifts_path %>
+  <h4 class="results-heading">Results</h4>
+</div>
+
+<h1 class="center-heading">Results</h1>
+<h3 class="below-center-heading">The Best Gifts</h3>
+
+<table class="results-table">
+  <thead>
+    <tr>
+      <th>Gift Name</th>
+      <th>Upvotes</th>
+      <th>Downvotes</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @gifts.each do |gift| %>
-        <tr>
-            <td><%= gift.name %></td>
-            <td><%= gift.upvotes %></td>
-            <td><%= gift.downvotes %></td>
-        </tr>
+      <tr>
+        <td><%= gift.name %></td>
+        <td><%= gift.upvotes %></td>
+        <td><%= gift.downvotes %></td>
+      </tr>
     <% end %>
+  </tbody>
 </table>

@@ -2,17 +2,26 @@
 
 <% content_for :title, "Gifts" %>
 
-<h1>Gifts</h1>
+<div class="top-bar">
+  <div></div>
+  <h3 class="giftmash-heading">Giftmash</h3>
+  <%= link_to 'RESULTS', results_gifts_path, class: 'top-link' %>
+</div>
 
-<div id="gifts">
-  <h3>What do you like better</h3>
+
+<h1 class="center-heading">What do you like better?</h1>
+
+<div class="gifts-container">
   <% @random_gifts.each do |gift| %>
-    <%= gift.name %> - <%= gift.id %>
-    <%= image_tag gift.image_url %>
-    <%= button_to "LIKE", upvote_gift_path(gift, downvoted_gift_id: gift == @random_gifts.first ? @random_gifts.last.id : @random_gifts.first.id), 
-                                        method: :patch %>
+    <div class="gift-card">
+      <%= gift.name %>
+      <%= image_tag gift.image_url %>
+      <%= button_to "LIKE", upvote_gift_path(gift, downvoted_gift_id: gift == @random_gifts.first ? @random_gifts.last.id : @random_gifts.first.id), 
+                                          method: :patch, class: 'like-button' %>
+    </div>
   <% end %>
-  <%= link_to 'SKIP', giftmash_gifts_path %>
-  <%= link_to 'RESULTS', results_gifts_path %>
+</div>
 
+<div class="skip-button">
+  <%= link_to 'SKIP', giftmash_gifts_path, class: 'skip-link' %>
 </div>
