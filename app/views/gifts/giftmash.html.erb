@@ -11,13 +11,17 @@
 
 <h1 class="center-heading">What do you like better?</h1>
 
-<div class="gifts-container">
+<div class="gifts-loader" id="gifts-loader"></div>
+<div id="overlay" class="overlay"></div>
+
+<div class="gifts-container" data-controller="giftmash">
   <% @random_gifts.each do |gift| %>
     <div class="gift-card">
       <%= gift.name %>
       <%= image_tag gift.image_url %>
       <%= button_to "LIKE", upvote_gift_path(gift, downvoted_gift_id: gift == @random_gifts.first ? @random_gifts.last.id : @random_gifts.first.id), 
-                                          method: :patch, class: 'like-button' %>
+                                          method: :patch, class: 'like-button', 
+                                          data: { turbo: false, action: "click->giftmash#showLoader"} %>
     </div>
   <% end %>
 </div>
