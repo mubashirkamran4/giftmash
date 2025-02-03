@@ -12,6 +12,8 @@ RUN bundle install
 
 COPY . .
 
+RUN chown -R root:root /giftmash
+
 RUN bundle exec rake assets:precompile || true
 
 EXPOSE 3000
