@@ -21,7 +21,7 @@ class GiftsController < ApplicationController
   # UPVOTE THE GIFTS
   def upvote
     @gift.update!(upvotes: @gift.upvotes += 1)
-    downvoted_gift = Gift.find(params[:downvoted_gift_id])
+    downvoted_gift = Gift.find(gift_params[:downvoted_gift_id])
     downvoted_gift.update!(downvotes: downvoted_gift.downvotes += 1)
     redirect_to giftmash_gifts_path
   end
