@@ -41,13 +41,16 @@
         rails gift_importers:import_gifts_from_csv
     ```
 
-* Open the browser and point URL to `http://localhost:3000/` and you would see the 2 random gifts next to each other. 
+* Open the browser and point URL to `http://localhost:3000/` and you would see the 2 random gifts next to each other as shown below:
+  ![Screenshot 2025-02-03 at 2 34 39 AM](https://github.com/user-attachments/assets/2d72b399-6e5e-4d7e-ba8d-fcc845ec7792)
+
     * Click Like button under the product you like and it should upvote the liked one, downvote the discarded one and would be saved into db, the page would refresh and you can see another 2 random gifts every time you click like.
 
     * If you want to skip , click skip button on the bottom right and it would simply do thing with upvotes/downvotes instead would refresh the page and would display you next 2 gifts.
 
-    * If you want to see the Results page where gifts are ordered by upvotes, click the Results page on the top right and that would take you to results table. Clicking on Giftmash on top left would take you back to the home giftsmash page.
-    
+    * If you want to see the Results page where gifts are ordered by upvotes, click the Results page on the top right and that would take you to results table as shown below. Clicking on Giftmash on top left would take you back to the home giftsmash page.
+    ![Screenshot 2025-02-03 at 2 34 47 AM](https://github.com/user-attachments/assets/0c51ae2e-cd41-439d-9c53-a1239592b4b9)
+
 * To execute the test cases:
     * go to `giftmash_test` container via command: `docker-compose exec giftmash_test bash`
     * run the command `rspec` and it will execute the test cases for gift model and controller present inside `spec/models/gift_spec.rb` and `spec/controllers/gifts_controllers.rb` files.
