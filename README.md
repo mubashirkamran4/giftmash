@@ -28,6 +28,13 @@
     ```
         docker-compose exec giftmash bash
     ```
+
+* Create the database and run the database migrations inside the container:
+
+    ```
+        rails db:create db:migrate
+    ```
+
 * Execute the rake task to import the gifts from excel file `db/data/gifts_macroman_to_utf8.csv`:
 
     ```
@@ -41,3 +48,6 @@
 
     * If you want to see the Results page where gifts are ordered by upvotes, click the Results page on the top right and that would take you to results table. Clicking on Giftmash on top left would take you back to the home giftsmash page.
     
+* To execute the test cases:
+    * go to `giftmash_test` container via command: `docker-compose exec giftmash_test bash`
+    * run the command `rspec` and it will execute the test cases for gift model and controller present inside `spec/models/gift_spec.rb` and `spec/controllers/gifts_controllers.rb` files.
